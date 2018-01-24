@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+
+    <title></title>
+  </head>
+  <body>
+<form class="" action="http://127.0.0.1:8081/edi" method="POST">
+  <h1>edit quote</h1>
+  <h3 class='a'name='id'></h3>
+
+  <br>
+  quote<textarea name='quote' style='width:500px; height:50px'></textarea>
+  <br />
+  rate <select name="rate">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+ </select>
+  <input type = "submit" value = "Upload Fil" />
+</form>
+
+<a href="#"></a>
+
+
+  </body>
+
+  <script type="text/javascript">
+
+//geting the id form the url
+var s = window.location.href;
+var i = s.indexOf('=');
+let  id= s.substr(i+1);
+console.log(id)
+//---------------------
+
+//displaying
+let quotes_url='http://127.0.0.1:8081/all_quote'
+let quotesList
+$(document).ready(function(){
+    $.ajax({
+ url:quotes_url,
+     dataType: 'json',
+     success:function(result){
+if (result){
+  quotesList= result
+$('h3').append(id);
+
+for (var i = 0; i < quotesList.length; i++) {
+if (quotesList[i]._id === id){
+
+  console.log(quotesList[i].author)
+  $('h3').prepend(quotesList[i].author +'of id: ')
+$('textarea'). append( quotesList[i].quote)
+
+}
+
+}
+      }
+     }
+  });
+});
+
+
+  </script>
+</html>

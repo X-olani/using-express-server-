@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+
+    <title>Quotes form all places</title>
+  </head>
+  <body>
+<div class="quote_container">
+  <div class="quote">
+<h1></h1>
+  </div>
+
+</div>
+  </body>
+
+
+  <script type="text/javascript">
+
+
+//$.git(  https://api.darksky.net/forecast/6c98338769c3a4a9a3e1de90ef3b03ec/30.5595,22.9375)
+//loadJson(https://api.darksky.net/forecast/6c98338769c3a4a9a3e1de90ef3b03ec/30.5595,22.9375)
+let quotes_url='http://127.0.0.1:8081/all_quote'
+let quotesList
+$(document).ready(function(){
+    $.ajax({
+     url:quotes_url,
+     dataType: 'json',
+     success:function(result){
+if (result){
+  quotesList= result
+
+  $('.quote').html(quotesList)
+  for (var i = 0; i < quotesList.length; i++) {
+    $('.quote').append("<div class='quoteSize'>"+"<h3>Author: "+quotesList[i].author+"</h3><br>"+quotesList[i].quote+"<a href='http://127.0.0.1:8081/edit?id="+quotesList[i]._id+"'>"+"<button value='"+quotesList[i]._id+"'>Edit</button>"+"</a>"+"<a href='http://127.0.0.1:8081/delete_quote'><button class='delete'> delete</button></a>"+ "</div>")
+    console.log(quotesList[i]._id)
+  }
+let key
+ $('button').click(function(){
+   key=$(this).val()
+if ($.eq(quotesList[i])===key)
+console.log('hey')
+
+
+
+
+ })
+}
+
+
+
+          }
+    });
+  });
+</script>
+
+</html>
