@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<h2>inspect/console the page </h2>
+  </body>
+
+  <script type="text/javascript">
+let amount;
+ i=0;
+
+ function cost(distance) {
+ return distance*3;
+}
+
+
+while (i<=200) {
+  i+=20
+  console.log(i)
+
+
+  if(cost(i)<100){
+amount= cost(i)*0.025
+amount= cost(i) -amount;
+console.log(amount+ ' cost is less than 100 you get 2,5% dicount')
+}
+
+else if (cost(i)>450) {
+amount=cost(i)*0.10;
+amount=cost(i)- amount;
+console.log( amount+" the cost is above R450 you get 10%")
+
+//document.getElementById('yourdis').innerHTML=()
+}
+
+
+}
+</script>
+</html>
